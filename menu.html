@@ -1,0 +1,89 @@
+<head>
+<script src='jquery.js'></script>
+
+<style>
+body, html{
+	margin:0px;
+}
+.title{
+	text-align: center;
+	
+	font-weight: bold;
+}
+.main-title{
+	font-size: 30px;
+	line-height:60px;
+}
+.title-wrapper{
+	width: 100%;
+	background-color:lightblue;
+	height: 60px;
+}
+.widget{
+	width: 300px;
+	height: 300px;
+	border: solid black 1px;
+	background-color:  lightyellow;
+	border-radius: 10px;
+	margin: 30px;
+	display: inline-block;
+}
+.widget:hover{
+	background-color: lightgreen;
+	cursor: pointer;
+
+}
+</style>
+</head>
+<body>
+<div class='title-wrapper'>
+	<h3 class='title main-title'>Physics Classroom</h3>
+</div>
+
+<div class = 'content-wrapper'>
+	<h3 class='title'>Choose classroom to create</h3>
+
+	<div class = 'classroom-wrapper'>
+		
+	</div>
+</div>
+</body>
+
+<script>
+function createClassroomWidget(settings){
+	var str = "";
+	str += "<div class='widget' style = ' flex-direction: column;' target='"+settings.page+"'>"
+			+"<p class='title' >"+settings.title+"</p>"
+			+"<div style = 'flex-grow: 1; overflow: auto; object-fit: fill; margin: 10px'>"
+				+"<img src='"+settings.image+"' alt='"+settings.title+"' style = 'height: 230px; width: 100%'>"
+			+"</div>"
+		+ "</div>"
+	$('.classroom-wrapper').append(str);
+}
+
+$(document).ready(function(){
+	var settings = {
+		title: 'Types of Matter—8',
+		image: 'http://lorpub.gadoe.org/State%20of%20Georgia/GAVS%20Shared/Science/APChem_LiquidsSolidsSolutions_Shared/statesofmatter.png',
+		page:  'TypesOfMatter'
+
+	}
+	createClassroomWidget(settings);
+
+	var settings = {
+		title: 'Wave Transfer',
+		image: 'http://4.bp.blogspot.com/_nD_R3gXtq2Y/TEDGRhyvicI/AAAAAAAAAfk/4L2059FLW9E/s1600/1000px-Sine_waves_different_frequencies.svg.png',
+		page:  'WaveTransfer'
+	}
+	createClassroomWidget(settings);
+
+	$(".widget").on("click", function(e){
+		var newPage = $(this).attr("target");
+		window.location = newPage;
+		
+	})
+
+
+})
+
+</script>
